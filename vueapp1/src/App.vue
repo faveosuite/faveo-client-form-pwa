@@ -21,11 +21,13 @@ import FaveoFormClientPanel from "./components/Client/FaveoFormClientPanel.vue";
 			</ul>
 		</nav>
 
-		<div class="col">sxa</div>
+		<div class="col"></div>
+
 		<div class="col-10">
 
 			<FaveoFormClientPanel panel="client" category="ticket"></FaveoFormClientPanel>
 		</div>
-		<div class="col">axaxa</div>
+
+		<div class="col"></div>
 	</div>
 </template>

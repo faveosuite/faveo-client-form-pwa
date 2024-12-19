@@ -6,7 +6,7 @@
 
 		<modal :showModal="show" :onClose="closeModal">
 
-			<template #title><h4>{{ panel === 'client' ? lang('register') : lang('create_user') }}</h4></template>
+			<template #title><h5 class="modal-title">{{ panel === 'client' ? lang('register') : lang('create_user') }}</h5></template>
 
 			<template #fields>
 
@@ -14,7 +14,7 @@
 
 					<alert componentName="user-form-modal"/>
 
-					<form-with-captcha v-if="formUniqueKey && formSelected" :loading="!isChildFormLoading" btnClass='btn btn-custom pull-right text-white' btnName="submit"
+					<form-with-captcha v-if="formUniqueKey && formSelected" :loading="!isChildFormLoading" btnClass='btn btn-primary pull-right text-white' btnName="submit"
 					                   componentName="user-form-modal" :btnStyle="btnStyle"
 					                   btn_id="user-submit" :formSubmit="formSubmit" :page="formId === 'chat-widget' ? '' : panel === 'client' ? 'requester_create_client' : 'requester_create_agent'"
 					                   recaptchaContainerClass="mt-2" :inputStyle="inputStyle" :disableSubmit="submitFormInProgress">
@@ -48,7 +48,7 @@
 			<template v-show="!isChildFormLoading" #controls>
 
 				<button type="button" class="btn"
-				        :class="[panel === 'agent' || 'admin' ? 'btn-primary' : 'btn-custom text-white', 'pull-right']"
+				        :class="[panel === 'agent' || 'admin' ? 'btn-primary' : 'btn-primary text-white', 'pull-right']"
 				        :disabled="submitFormInProgress"
 				        @click="popUpSubmit()"
 				        :style="btnStyle">
@@ -221,7 +221,7 @@ export default {
 <style scoped>
 
 #user-form-modal-body {
-	max-height: 300px;
+	//max-height: 300px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding-top: 10px;

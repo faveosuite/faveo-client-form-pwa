@@ -24,7 +24,7 @@
 			</StaticSelect>
 		</div>
 
-		<FormWithCaptcha v-if="formUniqueKey && formSelected" btnClass='btn btn-custom pull-right text-white' btnName="submit"
+		<FormWithCaptcha v-if="formUniqueKey && formSelected" btnClass='btn btn-primary pull-right text-white' btnName="submit"
 		                 componentName="faveo-form" :loading="!showLoader"
 		                 btn_id="client-ticket-submit-button" :formSubmit="formSubmit" :page="formId == 'chat-widget' ? '' : category+'_create_client'"
 		                 recaptchaContainerClass="mt-2" :input-style="inputStyle" :btn-style="btnStyle" :disableSubmit="submitFormInProgress">
@@ -60,7 +60,7 @@
 
 			<div class="col-md-12">
 
-				<button type="submit" class="btn btn-custom pull-right text-white" :disabled="submitFormInProgress" @click="popUpSubmit()"
+				<button type="submit" class="btn btn-primary pull-right text-white" :disabled="submitFormInProgress" @click="popUpSubmit()"
 				        :style="btnStyle" id="client_form_submit">
 					<span><i class="fas fa-save"></i></span>
 					{{ trans('submit') }}
@@ -273,10 +273,10 @@ export default {
 		getDefaultFormValue () {
 
 			this.showLoader = true;
-alert('in')
+
 			console.log(axios,'kjhg')
 			axios.get('/from/forms/'+this.category+'?panel=client').then(res=>{
-alert('succ')
+
 				this.formsLength = res.data.data.data.length;
 
 				this.selectedForm = res.data.data.data[0];
@@ -286,11 +286,10 @@ alert('succ')
 				this.updateFetchApi()
 
 			}).catch(err=>{
-alert('in err')
-				console.log(err,'lkjhgf')
+
 				this.showLoader = false;
 
-				// errorHandler(err,'faveo-form')
+				errorHandler(err,'faveo-form')
 			})
 		},
 		/**

@@ -186,7 +186,7 @@ export default {
 			relative_urls: self.relativeUrls,
 			remove_script_host: self.removeScriptHost,
 			document_base_url: self.basePath(),
-			images_upload_url: self.basePath() + '/api/tiny-image-uploader?_token=' + document.querySelector('meta[name="csrf-token"]').getAttribute('content')+'&auth=false&api_key='+this.getApiKey,
+			images_upload_url: 'no_link',
 			convert_urls : self.convertURLs,
 			plugins: (self.page !== 'kb') ? plugins.filter(element => element !== 'media') : plugins,
 			text_patterns: self.textpattern_patterns,
@@ -269,15 +269,8 @@ export default {
 
 		getCsrfToken() {
 
-			if(this.getApiKey) {
+			this.options.images_upload_url = 'no_link';
 
-				this.options.images_upload_url = this.basePath() + '/api/tiny-image-uploader?_token=' + document.querySelector('meta[name="csrf-token"]').getAttribute('content')+'&api_key='+this.getApiKey;
-
-			} else {
-
-				this.options.images_upload_url = this.basePath() + '/api/tiny-image-uploader?_token=' + document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-			}
 		},
 
 		removeAttachment(x){

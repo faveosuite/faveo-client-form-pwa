@@ -953,27 +953,27 @@ export const isArchive = (path) => {
 export const sessionItems =
 
     {
-        isRtlLayout : sessionStorage.getItem('is_rtl'),
+        isRtlLayout : false,
 
-        headerColor:  sessionStorage.getItem('header_color'),
+        headerColor:  '',
 
-        recaptchaSiteKey: sessionStorage.getItem('siteKey'),
+        recaptchaSiteKey: '',
 
-        recaptchaVersion: sessionStorage.getItem('version'),
+        recaptchaVersion: '',
 
-        recaptchaApplyfor: sessionStorage.getItem('applyfor'),
+        recaptchaApplyfor: [],
 
-        isUserLoggedIn: sessionStorage.getItem('userLoggedIn'),
+        isUserLoggedIn: false,
 
-        loggedUserName: sessionStorage.getItem('full_name'),
+        loggedUserName: '',
 
-        loggedUserMail: sessionStorage.getItem('logged_in_user_mail'),
+        loggedUserMail: '',
 
-        loggedUserRole: sessionStorage.getItem('user_role'),
+        loggedUserRole: '',
 
-        appVersion:  sessionStorage.getItem('app_version'),
+        appVersion: '',
 
-        appLanguage:  sessionStorage.getItem('app_language')
+        appLanguage: 'en'
     }
 
 export const parseUrlParams = () => {
