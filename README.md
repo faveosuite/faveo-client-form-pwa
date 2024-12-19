@@ -1,11 +1,18 @@
-This Repo contains code for Faveo Submit a ticket form
+## How to setup Faveo Client Form Vue PWA
 
-There are two kinds of form in this repo
-1. Create ticket form using PHP Mail functionality
-2. Create ticket form using Faveo Create ticket API
+This Vue PWA app has been compiled and contains all the required assets to serve the webpage as PWA. To successfully host and serve this app you must follow the below steps.
 
-Either of these forms can be hosted on your webserver to see and use this functionality.
+- Upload the **vueapp** directory on the server.
+- Set `vueapp/dist` as Document root directory for your virtual host or domain host.
+- Ensure the SSL certificates are installed on the server and app is served with "https"
+- Edit `vueapp/public/config.js` as directed
+  - 'apiBaseURL' : Set URL where Faveo is running on other domain or subdomain
+  - 'theme' : Basic bootstrap theme class name as string
+  - 'color' : Used as color of buttons and other elements on the page HEX color code
+  - 'defaultRequester' : Allows to decide whether users should be able to create requester or not. If you do not want to provide users with option to create requester then pass an integer ID of a user from Faveo. App will create tickets under that user in Faveo.
+- **Important!** If Faveo is on different domain than the app then the browsers will throw CORS errors. In that case you must update Faveo server configuration to allow cross origin access. There are different ways to allow CORS on different servers. Use appropriate method based on your Apache or Nginx server.
 
+> Note: While enabling CORS always open access for selected domain (in this case domain of the Vue app) to ensure the security risks are low.
 
 ### Server Specification
 - PHP 8.1
