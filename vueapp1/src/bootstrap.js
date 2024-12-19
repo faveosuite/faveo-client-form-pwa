@@ -3,11 +3,9 @@ import lodash from 'lodash-core';
 window._ = lodash;
 
 import './assets/css/common.scss';
-
 import './assets/css/dynamicSelectCommon.css';
-
 import './assets/css/popover.css';
-
+import './assets/css/tooltip.css';
 import 'vue-select/dist/vue-select.css';
 import 'vue-datepicker-next/index.css';
 import 'intl-tel-input/build/css/intlTelInput.css';

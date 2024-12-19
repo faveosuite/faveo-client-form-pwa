@@ -54,7 +54,7 @@ export default {
 	 */
 	props : {
 		btn_id : { type : String, default : ''},
-		btnClass : { type : String, default : 'btn btn-custom' },
+		btnClass : { type : String, default : 'btn btn-primary' },
 		btnName : { type : String, default : 'save' },
 		btnStyle : { type : Object, default : ()=>{} },
 		inputStyle: { type : Object, default: () =>{} },
