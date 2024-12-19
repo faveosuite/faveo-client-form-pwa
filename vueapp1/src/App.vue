@@ -1,5 +1,6 @@
 <script setup>
 
+import FaveoFormClientPanel from "./components/Client/FaveoFormClientPanel.vue";
 </script>
 
 <template>
@@ -14,7 +15,7 @@
 
 					<a class="nav-link" href="javascript:;">
 
-						<img src="/public/images/192X192-01.png" height="50" width="50" alt="Img">
+						<img src="/images/192X192-01.png" height="50" width="50" alt="Img">
 					</a>
 				</li>
 			</ul>
@@ -22,7 +23,8 @@
 
 		<div class="col">sxa</div>
 		<div class="col-10">
-			<form-entry panel="client" category="ticket" config="config"></form-entry>
+
+			<FaveoFormClientPanel panel="client" category="ticket"></FaveoFormClientPanel>
 		</div>
 		<div class="col">axaxa</div>
 	</div>
