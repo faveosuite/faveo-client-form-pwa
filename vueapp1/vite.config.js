@@ -16,22 +16,11 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
-        icons: [
-          {
-            src: '/icons/icon-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/icons/icon-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
       },
       workbox: {
         globPatterns: ['**/*.{html,js,css,png,jpg,jpeg,svg,woff,woff2}'],
       },
+      manifestFilename: 'manifest.json',
     }),
   ],
   resolve: {
@@ -41,12 +30,11 @@ export default defineConfig({
   },
   build: {
     emptyOutDir: true,  // Clear the output directory before build
-    outDir: 'public',   // Build output directory
     rollupOptions: {
       output: {
-        assetFileNames: 'assets/[name][extname]', // Correct asset naming
-        chunkFileNames: 'chunks/[name].js',       // Chunk naming
-        entryFileNames: 'entry/[name].js',        // Entry file naming
+        assetFileNames: 'assets/[name][extname]',
+        chunkFileNames: 'chunks/[name].js',
+        entryFileNames: 'entry/[name].js',
       },
     },
   },
