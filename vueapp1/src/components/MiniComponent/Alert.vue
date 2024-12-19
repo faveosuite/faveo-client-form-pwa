@@ -1,8 +1,8 @@
 <template>
 
 	<div v-if="shallDisplay()" class="alert-container" id="alert" >
-		<div v-bind:class="['alert', classname]">
-			<button type="button" v-on:click="dismiss" class="close" id="alert_close">×</button>
+		<div v-bind:class="['alert alert-dismissible', classname]">
+			<button type="button" v-on:click="dismiss" class="btn-close close" id="alert_close"></button>
 			<!-- <h4 v-if="classname=='alert-danger'"><i id="ban" class="icon fa fa-ban"></i>&nbsp;{{lang('alert')}}!</h4> -->
 			<div id="alert-message">
 				<i v-if="classname=='alert-success'" class="fa  fa-check-circle alert-icon"></i>
@@ -132,8 +132,8 @@ export default {
 }
 
 #alert_close{
-	font-size: 1.5rem !important;
-	margin-top: -5px !important;
+	font-size: .75rem !important;
+	//margin-top: -5px !important;
 }
 
 #alert-message{ display: flex; }

@@ -1,15 +1,15 @@
 <template>
 
-	<div class="card card-light mb-0 rounded-0">
+	<div class="card">
 
 		<div class="card-header">
 
-			<h3 class="card-title" v-tooltip="formSection.label ? formSection.label : formSection.title">{{formSection.label ? subString(formSection.label) : subString(formSection.title)}}</h3>
-			<!-- Slot for rendering custom button content -->
+			{{formSection.label ? subString(formSection.label) : subString(formSection.title)}}
+
 			<slot name="button"></slot>
 		</div>
 
-		<div class="card-body p-0 pt-2">
+		<div class="card-body">
 
 			<div class="row">
 

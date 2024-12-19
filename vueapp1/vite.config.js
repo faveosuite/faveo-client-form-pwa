@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/', // Adjust base path if necessary (use '/' if served from root)
+  base: '/faveo-client-form-pwa/vueapp1/', // Adjust base path if necessary (use '/' if served from root)
   plugins: [
     vue(),
     VitePWA({
@@ -15,12 +15,14 @@ export default defineConfig({
         theme_color: '#42b983',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/faveo-client-form-pwa/vueapp1/',
       },
       workbox: {
         globPatterns: ['**/*.{html,js,css,png,jpg,jpeg,svg,woff,woff2}'],
       },
       manifestFilename: 'manifest.json',
+      srcDir: 'src', // Ensure this points to the correct source directory if needed
+      filename: 'sw.js',
     }),
   ],
   resolve: {

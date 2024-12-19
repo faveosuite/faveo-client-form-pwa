@@ -47,7 +47,7 @@
 						:style="inputStyle"
 					>
 						<template #spinner="{ loader }" >
-							<Loader v-if="isLoading" class="loader-area" :duration="4000" :size="20"></Loader>
+							<loader v-if="isLoading" class="loader-area" :duration="4000" :size="20"></loader>
 						</template>
 						<template #no-options="{search, searching}">
 							<span></span>
@@ -139,7 +139,6 @@ import { getSubStringValue, boolean } from "../../../helpers/extraLogics";
 import { convertMapToSubmitableData } from '../../../helpers/formUtils';
 
 import _ from 'lodash-core';
-import Loader from "../Loader.vue";
 import FaveoImageElement from "../../Common/FaveoImageElement.vue";
 
 export default {
@@ -745,7 +744,6 @@ export default {
 
 	components: {
 		FaveoImageElement,
-		Loader,
 		'v-select': vSelect,
 		'form-field-template': FormFieldTemplate
 	}

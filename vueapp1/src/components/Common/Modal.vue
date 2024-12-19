@@ -2,7 +2,7 @@
 
 	<transition v-if="currentStatus" name="modal">
 
-		<div class="modal-mask" :class="{rtl : language === 'ar'}">
+		<div class="modal-mask modal" :class="{rtl : language === 'ar'}">
 
 			<div class="modal-wrapper " :class="classname">
 
@@ -12,9 +12,9 @@
 
 						<slot name="title"></slot>
 
-						<button v-if="showCloseBtn || showIconCloseBtn" :class="{left: lang_locale == 'ar'}" type="button" @click="onClose()" class="close">
+						<button v-if="showCloseBtn || showIconCloseBtn" :class="{left: lang_locale == 'ar'}" type="button" @click="onClose()" class="btn-close close">
 
-							<span v-if="!showbuttonName" aria-hidden="true" id="modal_close">&times;</span>
+<!--							<span v-if="!showbuttonName" aria-hidden="true" id="modal_close">&times;</span>-->
 
 						</button>
 
