@@ -224,6 +224,9 @@ export const faveoFormCommons = {
                     }
                     successHandler(response, 'faveo-form');
 
+                    if(response.data.data.ticket_number !== undefined) {
+                        response.data.message += ' <button onclick="printTicket(\''+response.data.data.ticket_number+'\')"> Click here to print.</button>'
+                    }
                     // Call afterSubmit function to perform postSubmit operations
                     this.afterSubmit(response);
                 })

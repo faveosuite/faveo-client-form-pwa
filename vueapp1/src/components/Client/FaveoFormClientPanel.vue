@@ -274,7 +274,6 @@ export default {
 
 			this.showLoader = true;
 
-			console.log(axios,'kjhg')
 			axios.get('/from/forms/'+this.category+'?panel=client').then(res=>{
 
 				this.formsLength = res.data.data.data.length;

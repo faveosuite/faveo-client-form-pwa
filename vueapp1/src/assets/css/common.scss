@@ -1,16 +1,16 @@
-// ******************* COMMON VARIABLES TO USE **************//
+/* ******************* COMMON VARIABLES TO USE ************** */
 
 $faveo-fontSize :18px;
 $faveo-red:#d73925;
 $faveo-white: #fff;
 
 
-// ******************* COMMON VARIABLES TO USE END***********//
+/* ******************* COMMON VARIABLES TO USE END*********** */
 
-// **************** FAVEO BOX LAYOUT END ************************//
+/* **************** FAVEO BOX LAYOUT END ************************ */
 
 
-// **************** FAVEO COLOR ********************************//
+/* **************** FAVEO COLOR ******************************** */
 
 .faveo-danger{
   color: $faveo-red;
@@ -19,11 +19,11 @@ $faveo-white: #fff;
 
 
 
-// **************** FAVEO COLOR END ****************************//
+/* **************** FAVEO COLOR END **************************** */
 
 
 
-//***************** COMMON CLASS **********************************//
+/* ***************** COMMON CLASS ********************************** */
 .faveo-header-title{
   font-size: $faveo-fontSize;
   font-weight: 500;
@@ -75,7 +75,7 @@ $faveo-white: #fff;
 
 
 
-//***************** COMMON CLASS END*******************************//
+/* ***************** COMMON CLASS END******************************* */
 
 
 .box-container{
@@ -269,7 +269,7 @@ input .form-control{
 }
 
 .tooltip-inner {
-  // it looks ugly when tooltip has more content but less width
+  /* it looks ugly when tooltip has more content but less width */
   max-width: 600px;
 }
 
@@ -377,7 +377,7 @@ textarea#task_description {resize: vertical !important;}
 .pb-25 { padding-bottom: 25px !important;}
 
 
-// ADDED HERE ONLY
+/* ADDED HERE ONLY */
 .btn-default {
   background-color: #f8f9fa;
   border-color: #ddd;
