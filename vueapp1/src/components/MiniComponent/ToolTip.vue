@@ -1,6 +1,6 @@
 <template>
 
-    <span style="margin-left: 2px;position:relative;top:0px;color: #337ab7;" v-tooltip="{ content : message, html : true, placement: placement }">
+    <span style="margin-left: 2px;position:relative;top:0px;color: #337ab7;" :style="themeStyle()" v-tooltip="{ content : message, html : true, placement: placement }">
         <i class="fas fa-question-circle" v-bind:style="{fontSize:size}" style="cursor: help"></i>
     </span>
 

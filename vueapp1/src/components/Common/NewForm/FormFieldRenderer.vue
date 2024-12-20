@@ -106,7 +106,7 @@
 			:keypressEvt="keypressEvent" :pasteEvt="pasteEvent" :inputStyle="inputStyle" :labelLength="25">
 		</TextField>
 
-		<ClientRequester v-if="formField.data_type === 'client-panel-requester'" :id="formField.key"
+		<ClientRequester v-if="formField.data_type === 'client-panel-requester' && !defaultRequester" :id="formField.key"
 		                 :label="formField.label"
 		                 :name="formField.key" :value="selectedValue" :onChange="onChange"
 		                 :required="isRequiredField"
@@ -321,6 +321,7 @@ export default {
 
 			entryFor : '',
 			showModal : false,
+			defaultRequester : import.meta.env.VITE_DEFAULT_REQUESTER
 		}
 	},
 
@@ -419,6 +420,10 @@ export default {
 		this.renderNestedFormFieldsIfAny(this.selectedValue);
 
 		this.updateFormValuesToStore();
+
+		if(this.defaultRequester && this.formField.data_type === 'client-panel-requester') {
+			this.onChange(this.defaultRequester, 'requester');
+		}
 	},
 
 	computed: {

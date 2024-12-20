@@ -58,6 +58,12 @@ export default {
 
     methods : {
 
+        themeStyle() {
+            return {
+                'color' : import.meta.env.VITE_COLOR + ' !important'
+            }
+        },
+
         basePath : () => (window.axios.defaults.baseURL),
 
         basePathVersion() {
