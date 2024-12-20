@@ -52,7 +52,7 @@ $to = ""; //replace coma separated email address(s) to which the app should send
       
       else
     {
-     echo "<script type='text/javascript'>alert('Your Request can't be Sent!');
+     echo "<script type='text/javascript'>alert('Your Request can\'t be Sent!');
     window.location.href ='form.html';
     </script>";
     }
