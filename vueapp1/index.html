@@ -1,82 +1,95 @@
 <!doctype html>
-
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Faveo Lite</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#40A6D7">
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343A40">
-        <link rel="apple-touch-icon" href="/images/192X192-01.png">
-        <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="manifest" href="/dist/manifest.json" />
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#40A6D7">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343A40">
+    <title>Faveo Lite</title>
 
-        <script type="text/javascript" src="/js/tinyMCE/tinymce.min.js"></script>
-    </head>
+    <!-- Icons -->
+    <link rel="apple-touch-icon" href="/images/192X192-01.png">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
 
-    <body>
+    <!-- CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/plugins/font-awesome/css/all.min.css">
 
-        <div id="app"></div>
+    <!-- Manifest -->
+    <link rel="manifest" href="./manifest.json">
+</head>
 
-        <script type="module" src="src/main.js"></script>
-        <script src="/config.js"></script>
-        <script src="/js/lang.js"></script>
+<body>
+<div id="app"></div>
 
-        <script>
+<!-- Core Scripts -->
+<script type="module" src="./src/main.js"></script>
+<script src="/config.js"></script>
+<script src="/js/lang.js"></script>
 
-            if(typeof config !== "undefined") {
-                $('.navbar').addClass(config.theme);
-            }
-            function printTicket(ticketNumber) {
-                var printDiv = window.open('', '', 'height=350, width=300');
-                var data = `
-                    <!DOCTYPE html>
-                    <html>
-                    <head>
-                    <meta charset="utf-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <title>Printing</title>
-                    <style type="text/css">
-                      html, body {
-                          margin: 0;
-                          padding: 0;
-                          width: 100%;
-                          height: 100%;
-                          display: table
-                      }
-                      #content {
-                          display: table-cell;
-                          text-align: center;
-                          vertical-align: middle;
-                          border-style: groove;
-                      }
-                      #printing-content {
+<!-- Bootstrap -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- TinyMCE -->
+<script type="text/javascript" src="/js/tinyMCE/tinymce.min.js"></script>
+
+<script>
+    if (typeof config !== "undefined" && document.querySelector('.navbar')) {
+        document.querySelector('.navbar').classList.add(config.theme);
+    }
+
+    function printTicket(ticketNumber) {
+        var printDiv = window.open('', '', 'height=350, width=300');
+        var data = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Printing</title>
+                <style type="text/css">
+                    html, body {
+                        margin: 0;
+                        padding: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: table
+                    }
+                    #content {
+                        display: table-cell;
+                        text-align: center;
+                        vertical-align: middle;
+                        border-style: groove;
+                    }
+                    #printing-content {
                         border-style: solid;
                         margin: 30%;
                         padding: 5%;
-                      }
-                    </style>
-                    </head>
-                    <body>
-                    <div id="content">
-                      <div id="printing-content">
-                        <img src="192X192-01.png" height="50px" width="50px"></a>
-                          <h1>`+ticketNumber+`</h1>
-                        </div>
+                    }
+                </style>
+                </head>
+                <body>
+                <div id="content">
+                    <div id="printing-content">
+                        <img src="/images/192X192-01.png" height="50px" width="50px">
+                        <h1>${ticketNumber}</h1>
                     </div>
-                    </body>
-                    </html>`;
-                printDiv.document.write(data);
-                printDiv.document.close();
-                setTimeout(function(){printDiv.print();}, 200)
-                setTimeout(function(){printDiv.close();}, 200)
-            }
-        </script>
-    </body>
+                </div>
+                </body>
+                </html>`;
+        printDiv.document.write(data);
+        printDiv.document.close();
+        setTimeout(function () {
+            printDiv.print();
+        }, 200);
+        setTimeout(function () {
+            printDiv.close();
+        }, 200);
+    }
+</script>
+</body>
+
 </html>

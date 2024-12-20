@@ -133,7 +133,7 @@ export default {
 
 #alert_close{
 	font-size: .75rem !important;
-	//margin-top: -5px !important;
+	/* margin-top: -5px !important; */
 }
 
 #alert-message{ display: flex; }
