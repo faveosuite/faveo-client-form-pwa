@@ -221,7 +221,7 @@ export default {
 <style scoped>
 
 #user-form-modal-body {
-	//max-height: 300px;
+	/* max-height: 300px; */
 	overflow-y: auto;
 	overflow-x: hidden;
 	padding-top: 10px;
