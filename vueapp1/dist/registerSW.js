@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/faveo-client-form-pwa/vueapp1/sw.js', { scope: '/faveo-client-form-pwa/vueapp1/' })})}
