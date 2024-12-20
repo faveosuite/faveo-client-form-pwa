@@ -61,7 +61,7 @@
 			<div class="col-md-12">
 
 				<button type="submit" class="btn btn-primary pull-right text-white" :disabled="submitFormInProgress" @click="popUpSubmit()"
-				        :style="btnStyle" id="client_form_submit">
+				        id="client_form_submit" :style="themeStyle()">
 					<span><i class="fas fa-save"></i></span>
 					{{ trans('submit') }}
 				</button>
@@ -349,13 +349,10 @@ export default {
 			this.updateCount();
 			window.emitter.emit('clientFormSubmitted');
 			this.organization = "";
-
-			if(this.mode === 'create' && this.category === 'ticket' && this.auth.user_data.length !== 0){
-				setTimeout(()=>{
-
-					let id = data.data.data.encrypted_id;
-					return this.$router.push('/check-ticket/'+id)
-				},3000)
+			if(import.meta.env.VITE_DEFAULT_PRINT) {
+				setTimeout(() => {
+					printTicket(data.data.data.ticket_number);
+				}, 1000);
 			}
 		},
 	},

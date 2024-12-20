@@ -110,7 +110,10 @@ export const faveoFormCommons = {
 
             _formData.append('g-recaptcha-response', this.getRecaptchaKey);
 
-            if(this.getSource) {
+            if(import.meta.env.VITE_CUSTOM_SOURCE) {
+                _formData.append('source_id', import.meta.env.VITE_CUSTOM_SOURCE);
+
+            } else if(this.getSource) {
 
                 _formData.append('source_id', this.getSource);
             }
@@ -222,11 +225,13 @@ export const faveoFormCommons = {
 
                         return
                     }
-                    successHandler(response, 'faveo-form');
 
                     if(response.data.data.ticket_number !== undefined) {
-                        response.data.message += ' <button onclick="printTicket(\''+response.data.data.ticket_number+'\')"> Click here to print.</button>'
+                        response.data.message += ' <button class="btn btn-sm btn-default" onclick="printTicket(\''+response.data.data.ticket_number+'\')"> Click here to print.</button>'
                     }
+
+                    successHandler(response, 'faveo-form');
+
                     // Call afterSubmit function to perform postSubmit operations
                     this.afterSubmit(response);
                 })

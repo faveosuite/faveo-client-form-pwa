@@ -51,7 +51,7 @@
 				        :class="[panel === 'agent' || 'admin' ? 'btn-primary' : 'btn-primary text-white', 'pull-right']"
 				        :disabled="submitFormInProgress"
 				        @click="popUpSubmit()"
-				        :style="btnStyle">
+				        :style="themeStyle()">
 					<span><i class="fas fa-save"></i></span>
 					{{ trans('submit') }}
 				</button>

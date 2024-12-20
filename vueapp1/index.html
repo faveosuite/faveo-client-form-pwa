@@ -25,7 +25,6 @@
 
 <!-- Core Scripts -->
 <script type="module" src="./src/main.js"></script>
-<script src="/config.js"></script>
 <script src="/js/lang.js"></script>
 
 <!-- Bootstrap -->
@@ -37,10 +36,6 @@
 <script type="text/javascript" src="/js/tinyMCE/tinymce.min.js"></script>
 
 <script>
-    if (typeof config !== "undefined" && document.querySelector('.navbar')) {
-        document.querySelector('.navbar').classList.add(config.theme);
-    }
-
     function printTicket(ticketNumber) {
         var printDiv = window.open('', '', 'height=350, width=300');
         var data = `
@@ -74,7 +69,7 @@
                 <body>
                 <div id="content">
                     <div id="printing-content">
-                        <img src="/images/192X192-01.png" height="50px" width="50px">
+                        <img src="/images/192X192-01.png" height="50px" width="50px" alt="Img">
                         <h1>${ticketNumber}</h1>
                     </div>
                 </div>

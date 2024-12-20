@@ -1,11 +1,14 @@
 <script setup>
 
 import FaveoFormClientPanel from "./components/Client/FaveoFormClientPanel.vue";
+
+const theme = import.meta.env.VITE_THEME;
+
 </script>
 
 <template>
 
-	<div class="row container-fluid">
+	<div class="row container-fluid" :class="theme">
 
 		<nav class="navbar navbar-expand-sm justify-content-center">
 

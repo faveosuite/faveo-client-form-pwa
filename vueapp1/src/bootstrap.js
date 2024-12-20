@@ -291,7 +291,7 @@ window.axios.interceptors.response.use((response) => {
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.axios.defaults.baseURL = config.apiBaseURL;
+window.axios.defaults.baseURL = import.meta.env.VITE_API_BASE_URL;
 
 /**
  * injects components into a container when passed event is triggered
