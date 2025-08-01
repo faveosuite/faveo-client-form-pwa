@@ -144,9 +144,5 @@ export default {
 	padding-left: 28px !important;
 }
 
-.form-check-input{
-	margin-left: -1rem;
-}
-
 .control-label { word-break: break-word; }
 </style>

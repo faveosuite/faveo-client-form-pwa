@@ -1,8 +1,8 @@
 <template>
-	<div :class="[classname, 'form-group', 'form-field-template', {'has-error': name && errors && (name in errors) }, { 'row': isInlineForm } ]" v-bind:id="label">
+	<div :class="[classname, 'form-group', 'form-field-template mb-3', {'has-error': name && errors && (name in errors) }, { 'row': isInlineForm } ]" v-bind:id="label">
 
 		<div :class="{ 'col-md-2 flex break-all': isInlineForm }">
-			<label v-bind:for="label" v-tooltip="showTooltipOnLabel ? label : ''" :style="labelStyle">{{getSubString(label,labelLength)}}</label>
+			<label v-bind:for="label" v-tooltip="showTooltipOnLabel ? label : ''" :style="labelStyle" class="form-label">{{getSubString(label,labelLength)}}</label>
 			<label class="is-danger" :style="labelStyle" v-if="required">*</label>
 			<tool-tip v-if="hint && hint !=='' && !tipRule" :message="getHint(hint)" size="small"></tool-tip>
 			<slot name="word-limit-counter"></slot>
