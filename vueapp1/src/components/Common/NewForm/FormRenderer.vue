@@ -255,7 +255,7 @@ export default {
 
 				this.$store.dispatch('updateSubmitApiEndpoint', {
 					formUniqueKey: this.formUniqueKey,
-					submitApiEndpoint: response.data.data.submit_endpoint
+					submitApiEndpoint: '/v3' + response.data.data.submit_endpoint
 				});
 
 				if(this.callingFrom !== 'popup') {

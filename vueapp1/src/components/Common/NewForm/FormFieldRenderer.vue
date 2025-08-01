@@ -321,7 +321,7 @@ export default {
 
 			entryFor : '',
 			showModal : false,
-			defaultRequester : import.meta.env.VITE_DEFAULT_REQUESTER
+			defaultRequester : parseInt(import.meta.env.VITE_DEFAULT_REQUESTER)
 		}
 	},
 

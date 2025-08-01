@@ -34,3 +34,21 @@ const theme = import.meta.env.VITE_THEME;
 		<div class="col"></div>
 	</div>
 </template>
+
+<style>
+
+.v-select input::placeholder { opacity: 0.3 !important; }
+
+::placeholder { opacity: 0.7 !important; }
+
+.form-label {
+	margin-bottom: .5rem;
+}
+
+label {
+	display: inline-block;
+	max-width: 100%;
+	font-weight: 600;
+	font-size: 14px;
+}
+</style>
