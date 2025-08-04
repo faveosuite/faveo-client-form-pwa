@@ -51,4 +51,17 @@ label {
 	font-weight: 600;
 	font-size: 14px;
 }
+
+.flex-100 { display: flex; width: 100%;}
+
+.req-btn {
+	height: 36px;
+	margin-left: 4px;
+}
+
+.form-field-action-button {
+	height: fit-content;
+	white-space: nowrap;
+	margin-left: 5px;
+}
 </style>
