@@ -85,7 +85,7 @@ export default {
 
 				let self = this;
 
-				const duration = this.getAlertDuration ? this.getAlertDuration : this.type === "success" ? 700000 : 700000;
+				const duration = this.getAlertDuration ? this.getAlertDuration : this.type === "success" ? 7000 : 7000;
 
 				setTimeout(function() {
 

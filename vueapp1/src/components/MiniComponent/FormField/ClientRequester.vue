@@ -3,7 +3,7 @@
 </style>
 <template>
 	<template v-if="showTooltip">
-		<text-field v-tooltip="requesterValue ? requesterValue : ''"
+		<text-field :title="requesterValue ? requesterValue : ''"
 		            v-if="isLoggedIn"
 		            :id="id"
 		            :label="label"
@@ -22,7 +22,7 @@
 		            for="client-requester">
 		</text-field>
 
-		<text-field v-tooltip="requesterValue ? requesterValue : ''"
+		<text-field :title="requesterValue ? requesterValue : ''"
 		            v-else
 		            :id="id"
 		            :label="label"
