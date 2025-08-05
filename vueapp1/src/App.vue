@@ -64,4 +64,10 @@ label {
 	white-space: nowrap;
 	margin-left: 5px;
 }
+
+.btn-light {
+	border-color: #c6c7c8;
+	box-shadow: none;
+	color: #444;
+}
 </style>
