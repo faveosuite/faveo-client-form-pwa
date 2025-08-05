@@ -349,7 +349,7 @@ export default {
 			this.updateCount();
 			window.emitter.emit('clientFormSubmitted');
 			this.organization = "";
-			if(import.meta.env.VITE_DEFAULT_PRINT) {
+			if(import.meta.env.VITE_DEFAULT_PRINT == 'true') {
 				setTimeout(() => {
 					printTicket(data.data.data.ticket_number);
 				}, 1000);
