@@ -13,10 +13,12 @@
 				       @blur="handleBlur"
 				       :multiple="multiple"/>
 
-				<button type="button" @click="$refs.files.click()" class="btn-bs-file btn btn-sm btn-default btn-block">
+				<div class="d-grid">
+					<button type="button" @click="$refs.files.click()" class="btn-bs-file btn btn-sm btn-light btn-block">
 
-					<span><i class="far fa-file"></i> {{ trans('choose_file') }}</span>
-				</button>
+						<span><i class="far fa-file"></i> {{ trans('choose_file') }}</span>
+					</button>
+				</div>
 
 				<div v-if="files && files.length">
 
@@ -26,7 +28,7 @@
 
 							{{ (file.name || file.value) + ' (' + (file.size) + (!file.view_url ? ' KB':'') +')'}}
 
-							<div class="float-right">
+							<div class="float-end">
 
 								<popover arrow placement="left">
 
@@ -48,7 +50,8 @@
 
 												</div>
 
-												<div v-if="name === 'package_pic' && file.view_url" class="card-body pb-0">
+												<div v-if="name === 'package_pic' && file.view_url"
+												     class="card-body pb-0">
 
 													<faveo-image-element id="attach-img" :source-url="file.view_url"
 													                     :classes="['preview_img']"/>
@@ -79,15 +82,19 @@
 								</a>
 
 								<!-- todo: this is a temporary block and should be removed once attachment module is rewritten  -->
-								<a v-if="(file.link || file.download_url) && (name !== 'package_pic')" class="fas fa-download ml-2" v-tooltip="trans('download_attachment')" style="color: inherit;"
-								   :href="(this.formType === 'asset' || this.formType === 'changes' || this.formType === 'service_desk' || this.formType === 'license' || this.formType === 'contract' || this.formType === 'releases' || this.formType === 'problem') ? file.download_url : (basePath() + file.link)"
+								<a v-if="(file.link || file.download_url) && (name !== 'package_pic')"
+								   class="fas fa-download ms-2" v-tooltip="trans('download_attachment')"
+								   style="color: inherit;"
+								   :href="(this.formType === 'asset' || this.formType === 'changes' || this.formType === 'service_desk' || this.formType === 'license' || this.formType === 'contract' || this.formType === 'releases' || this.formType === 'problem' ||this.formType === 'task' || this.formType === 'agent-script') ? file.download_url : (basePath() + file.link)"
 								></a>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<span v-if="errorMessage" class="error-block is-danger">{{ errorMessage }}{{ (lang(str) || lang(str1)) ? '.' : '' }}&nbsp;</span>
+				<span v-if="errorMessage" class="error-block is-danger">{{
+						errorMessage
+					}}{{ (lang(str) || lang(str1)) ? '.' : '' }}&nbsp;</span>
 				<i> {{ lang(str) }}</i>
 				<i> {{ lang(str1) }}</i>
 
@@ -162,9 +169,11 @@ export default {
 		//for SD size Modules
 		sizeModules: {type: String, default: ''},
 
-		formType : { type : String, default : ''},
+		formType: {type: String, default: ''},
 
-		labelLength : { type : [Number, String], default : 500 }
+		labelLength: {type: [Number, String], default: 500},
+
+		componentName: {type: String, default: 'faveo-form'}
 	},
 
 	data() {
@@ -190,25 +199,22 @@ export default {
 			changedValue: this.value,
 
 			counter: 0,
+
+			responseObj: {}
 		};
 	},
-	async beforeMount() {
-		await axios.get('file-manager/upload-info').then(response => {
-			if (!this.sizeModules.post_max_size) {
-				this.totalSize = response.data.data.maxPostSize;
-				this.str1 =  this.lang('max_upload_size') + this.formatBytes(this.totalSize);
-			}
-		}).catch(error => {
-			// Handle error if needed
-		});
-	},
 
-	mounted() {
-		this.max_size = this.sizeModules.post_max_size;
-		this.file_size = this.sizeModules.upload_max_filesize;
-		this.max_file = this.sizeModules.max_file_uploads;
+	async mounted() {
+
+		if (!this.sizeModules || Object.keys(this.sizeModules).length === 0) {
+			await this.getData();
+		}
+
+		this.max_size = this.sizeModules.post_max_size || this.responseObj?.maxPostSize;
+		this.file_size = this.sizeModules.upload_max_filesize || this.responseObj?.maxSingleFileSize;
+		this.max_file = this.sizeModules.max_file_uploads || this.responseObj?.maxFileUploadCount;
 		if (this.max_size !== undefined || this.file_size !== undefined || this.max_file !== undefined) {
-			this.str =  this.lang('max_upload_size') + this.formatBytes(this.max_size);
+			this.str = this.lang('max_upload_size') + this.formatBytes(this.max_size);
 		} else {
 			this.str = '';
 		}
@@ -220,7 +226,7 @@ export default {
 
 			this.updatefiles(newVal);
 
-			this.changedValue= newVal;
+			this.changedValue = newVal;
 		}
 	},
 
@@ -239,6 +245,40 @@ export default {
 				i = Math.floor(Math.log(bytes) / Math.log(k));
 
 			return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+		},
+
+		async getData() {
+			await axios.get('file-manager/upload-info').then(response => {
+				this.responseObj = response.data.data;
+			}).catch(error => {
+				// Handle error if needed
+			});
+		},
+
+		parseSizeToBytes(size) {
+			if (typeof size === 'number') return size; // already in bytes
+
+			const sizePattern = /^([\d.]+)\s*(bytes|kb|mb|gb|tb|pb|eb|zb|yb)?$/i;
+			const match = size.toString().trim().match(sizePattern);
+
+			if (!match) return 0;
+
+			const value = parseFloat(match[1]);
+			const unit = (match[2] || 'bytes').toLowerCase();
+
+			const unitMap = {
+				bytes: 1,
+				kb: 1024,
+				mb: 1024 ** 2,
+				gb: 1024 ** 3,
+				tb: 1024 ** 4,
+				pb: 1024 ** 5,
+				eb: 1024 ** 6,
+				zb: 1024 ** 7,
+				yb: 1024 ** 8
+			};
+
+			return value * (unitMap[unit] || 1);
 		},
 
 
@@ -262,7 +302,24 @@ export default {
 			this.counter++;
 			const files = e.target.files;
 			const maxFiles = this.max_file; // maximum number of files allowed
-			if (files.length + this.files.length > maxFiles) {
+			const filesTotalSize = this.files.reduce((acc, file) => {
+				return acc + this.parseSizeToBytes(file.size);
+			}, 0);
+
+			if (filesTotalSize + files[0].size > this.max_size) {
+
+				this.$store.dispatch('setAlert', {
+
+					type: 'danger',
+
+					message: this.trans('upload_failed') + this.formatBytes(this.max_size),
+
+					component_name: this.componentName
+				})
+
+				return;
+
+			} else if (files.length + this.files.length > maxFiles) {
 
 				let message1 = this.trans('file_upload_limit')
 
@@ -274,10 +331,10 @@ export default {
 
 					message: (`${message1} ${maxFiles} ${message2}`),
 
-					component_name: 'faveo-form'
+					component_name: this.componentName
 				})
 				return;
-			}else{
+			} else {
 				for (var i = 0; i < files.length; i++) {
 					if (this.multiple) {
 						const fileName = files[i].name;
@@ -377,7 +434,8 @@ input[type="file"] {
 	background: #f8f9fa;
 	border-radius: 0.25rem;
 }
-.file-details{
+
+.file-details {
 	padding: .3rem;
 	background: #f8f9fa;
 }
