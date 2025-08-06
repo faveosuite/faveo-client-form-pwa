@@ -21,6 +21,7 @@
 </head>
 
 <body>
+<img src="/images/192X192-01.png" height="50px" width="50px" alt="Img">
 <div id="app"></div>
 
 <!-- Core Scripts -->
@@ -37,6 +38,7 @@
 
 <script>
     function printTicket(ticketNumber) {
+        const imageUrl = `${location.origin}/faveo-client-form-pwa/vueapp1/images/192X192-01.png`;
         var printDiv = window.open('', '', 'height=350, width=300');
         var data = `
                 <!DOCTYPE html>
@@ -69,7 +71,7 @@
                 <body>
                 <div id="content">
                     <div id="printing-content">
-                        <img src="/images/192X192-01.png" height="50px" width="50px" alt="Img">
+                        <img src="${imageUrl}" height="50px" width="50px" alt="Img">
                         <h1>${ticketNumber}</h1>
                     </div>
                 </div>
