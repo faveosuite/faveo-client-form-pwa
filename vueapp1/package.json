@@ -11,7 +11,7 @@
   "dependencies": {
     "@vee-validate/i18n": "4.7.3",
     "@vee-validate/rules": "4.7.3",
-    "axios": "^1.7.9",
+    "axios": "^1.8.2",
     "epic-spinners": "^2.0.0",
     "es6-promise": "^4.2.8",
     "floating-vue": "^2.0.0-beta.24",
