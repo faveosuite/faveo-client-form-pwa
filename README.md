@@ -8,7 +8,7 @@ Either of these forms can be hosted on your webserver to see and use this functi
 
 
 ### Server Specification
-- PHP 7.3
+- PHP 8.1
 - Apache/NGINX/IIS web server
 
 ### Form using PHP Mail function:
