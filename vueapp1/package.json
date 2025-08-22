@@ -28,7 +28,7 @@
     "vue-select": "^4.0.0-beta.6",
     "vuex": "^4.1.0",
     "vue-recaptcha": "^2.0.3",
-    "@tinymce/tinymce-vue": "^5.1.1",
+    "@tinymce/tinymce-vue": "^6.3.0",
     "@aacassandra/vue3-progressbar": "^1.0.3"
   },
   "devDependencies": {
