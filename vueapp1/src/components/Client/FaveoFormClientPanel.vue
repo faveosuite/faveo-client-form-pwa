@@ -174,7 +174,7 @@ export default {
 
 		if(!this.editApiEndpoint) {
 
-			this.fetchFormFieldApi = 'api/form/render/';
+			this.fetchFormFieldApi = 'render/form/';
 
 			const editId = getIdFromUrl(this.currentPath());
 
